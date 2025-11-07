@@ -30,7 +30,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // 🔹 Backend'i tüm IP'lerde dinleyecek şekilde ayarla
-builder.WebHost.UseUrls("http://0.0.0.0:5115");
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5115";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 
 var app = builder.Build();
 
